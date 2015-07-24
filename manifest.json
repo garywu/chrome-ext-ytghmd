@@ -1,9 +1,9 @@
 {
-  "name" : "ytghmd: The YouTube GitHub Markdown Button",
-  "short_name" : "ytghmd",
+  "name" : "YouTube GitHub Markdown Button",
+  "short_name" : "#ytghmd",
 
-  "version" : "1",
-  "version_name" : "1 (pffy.cloud.farfalloni)",
+  "version" : "2",
+  "version_name" : "2 (pffy.cloud.farfalloni)",
 
   "description" : "The GitHub Markdown Button for YouTube.",
 
@@ -14,7 +14,7 @@
       "38": "icons/icon48.png"
     },
 
-    "default_title" : "the ytghmd button",
+    "default_title" : "#ytghmd",
     "default_popup" : "popup.html"
   },
 
