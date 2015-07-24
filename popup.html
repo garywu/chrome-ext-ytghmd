@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YouTube GitHub Markdown Button Popup Page</title>
+    <link href="css/ext.css" rel="stylesheet">
+  </head>
+  <body>
+  <div id="wrap">
+      <b>Watch Markdown:</b><br/>
+      <textarea name="watchmd" id="watchid" READONLY></textarea>
+      <br/><br/>
+      <b>Embed Markdown:</b><br/>
+      <textarea name="embedmd" id="embedid" READONLY></textarea>
+      <br/><br/>
+      <b>Preview:</b><br/>
+      <img id="imgid" title="loading..." src="">
+      <div id="footer">
+        <br/>YouTube GitHub Markdown Button.
+        <br/>Developed by <a target="_blank" href="https://github.com/pffy">The Pffy Authors</a>.
+      </div>
+  </div>
+    <script src="js/ytghmd.js"></script>
+    <script src="js/ext.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=onLoadPopup"></script>
+  </body>
+</html>
+<!--
+/**
+ * This is free and unencumbered software released into the public domain.
+ *
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+ *
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * For more information, please refer to <http://unlicense.org/>
+ */
+
+/**
+ * name     : popup.html (pffy.cloud.farfalloni)
+ * version  : -
+ * updated  : 2015-07-23
+ * license  : http://unlicense.org/ The Unlicense
+ * git      : https://github.com/pffy/chrome-ext-ytghmd
+ *
+ */

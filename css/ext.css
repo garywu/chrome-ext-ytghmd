@@ -1,0 +1,43 @@
+body {
+  font-size: 100%;
+}
+
+textarea {
+  font-family: courier;
+}
+
+b {
+  font-size: 12pt;
+}
+
+#watchid, #embedid {
+  height: 50px;
+  width: 400px;
+}
+
+#imgid {
+  width: 400px;
+  border: 1px solid gray;
+}
+
+#footer {
+  color: gray;
+  font-size: 10pt;
+}
+
+#footer a {
+  color: darkgrey;
+}
+
+#footer a:hover {
+  color: black;
+}
+
+/**
+ * name     : ext.css (pffy.cloud.farfalloni)
+ * version  : 1
+ * updated  : 2015-07-23
+ * license  : http://unlicense.org/ The Unlicense
+ * git      : https://github.com/pffy/chrome-ext-ytghmd
+ *
+ */
