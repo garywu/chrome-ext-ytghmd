@@ -27,8 +27,8 @@
 
 /**
  * name     : ui.js (pffy.cloud.farfalloni)
- * version  : 1
- * updated  : 2015-07-23
+ * version  : 5
+ * updated  : 2015-08-23
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
@@ -46,9 +46,10 @@
 
   document.getElementById('watchid').value = str;
   document.getElementById('embedid').value = str;
+  document.getElementById('citeid').value = str;
 }
 
-function displayMarkdown(id, title, imgurl) {
+function displayMarkdown(id, title, imgurl, author, date) {
 
   var watchurl = 'https://www.youtube.com/watch?v=' + id;
   var embedurl = 'https://www.youtube.com/embed/' + id;
@@ -60,8 +61,33 @@ function displayMarkdown(id, title, imgurl) {
   var embedstr = '[![' + title + ']' + '(' + imgurl + ')]'
     + '(' + embedurl + ' "' + title + '")';
 
+  var datestr = '(YEAR, MONTH DAY)';
+  var d = new Date(date);
+
+  if(d.getFullYear() && d.getDate()) {
+
+    var months = [
+      'January', 'February', 'March',
+      'April', 'May', 'June',
+      'July', 'August', 'September',
+      'October', 'November', 'December'
+      ];
+
+    datestr = '(' + d.getFullYear() + ', '
+      + months[d.getMonth()] + ' ' + d.getDate() + ')';
+  }
+
+
+  var fullStop = '. ';
+
+  var apastr = '' + author + fullStop
+    + datestr + fullStop
+    + title + ' [Video file]' + fullStop
+    + 'Retrieved from ' + watchurl;
+
   document.getElementById('watchid').value = watchstr;
   document.getElementById('embedid').value = embedstr;
+  document.getElementById('citeid').value = apastr;
 
   if(!imgurl) {
     document.getElementById('imgid').src = '';
@@ -86,11 +112,15 @@ function onLoadPopup() {
     this.select();
   });
 
+  document.getElementById('citeid').addEventListener('click', function() {
+    this.select();
+  });
+
   loading();
 
-  getData(function(videoid, title, thumbnail) {
-    if(videoid && title && thumbnail) {
-      displayMarkdown(videoid, title, thumbnail);
+  getData(function(videoid, title, thumbnail, author, date) {
+    if(videoid && title && thumbnail && author && date) {
+      displayMarkdown(videoid, title, thumbnail, author, date);
     } else {
       document.body.innerText = 'No YouTube Videos here.';
     }

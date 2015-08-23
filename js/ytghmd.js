@@ -27,8 +27,8 @@
 
 /**
  * name     : ytghmd.js (pffy.cloud.farfalloni)
- * version  : 1
- * updated  : 2015-07-23
+ * version  : 5
+ * updated  : 2015-08-23
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
@@ -101,12 +101,16 @@ function getData(callback) {
       url = '',
       videoId = '',
       title = '',
+      author = '',
+      date = '',
       thumbnail = '';
 
     // DEVELOPERS: This key can be shutoff at any time. Please create
     // your own API key at: https://console.developers.google.com/project
     const API_KEY = 'AIzaSyBtgKJE06Ys9obdL0Jnkfl_0kUMyfcA_Hw';
-    const DEFAULT_TEXT = 'INSERT-TEXT-HERE';
+    const DEFAULT_TEXT = 'INSERT-TITLE-HERE';
+    const DEFAULT_AUTHOR = 'INSERT-AUTHOR-HERE';
+    const DEFAULT_DATE = 'INSERT-DATE-HERE';
 
     gapi.client.setApiKey(API_KEY);
 
@@ -114,7 +118,7 @@ function getData(callback) {
     valid = isValid(url);
 
     if(!valid) {
-      callback(false, false, false);
+      callback(false, false, false, false, false);
     } else {
 
       videoId = getVideoId(url);
@@ -130,14 +134,16 @@ function getData(callback) {
 
       // finishes promise/future construct
       restRequest.then(function(resp) {
-
+        // console.log(resp); // check response results
         if(resp.result.items.length) {
           title = resp.result.items[0].snippet.title;
           thumbnail = resp.result.items[0].snippet.thumbnails.high.url;
-          callback(videoId, title, thumbnail);
+          author = resp.result.items[0].snippet.channelTitle;
+          date = resp.result.items[0].snippet.publishedAt;
+          callback(videoId, title, thumbnail, author, date);
         } else {
           thumbnail = 'https://i.ytimg.com/vi/' + videoId + '/0.jpg';
-          callback(videoId, DEFAULT_TEXT, thumbnail);
+          callback(videoId, DEFAULT_TEXT, thumbnail, DEFAULT_AUTHOR, DEFAULT_DATE);
         }
 
       }, function(reason) {

@@ -27,12 +27,12 @@
 
 /**
  * name     : ext.js (pffy.cloud.farfalloni)
- * version  : 1
- * updated  : 2015-07-23
+ * version  : 5
+ * updated  : 2015-08-23
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
  */
 
  // leave empty for now
-window.ext = {};
+ext = {};

@@ -10,7 +10,7 @@ b {
   font-size: 12pt;
 }
 
-#watchid, #embedid {
+#watchid, #embedid, #citeid {
   height: 50px;
   width: 400px;
 }
@@ -35,8 +35,8 @@ b {
 
 /**
  * name     : ext.css (pffy.cloud.farfalloni)
- * version  : 1
- * updated  : 2015-07-23
+ * version  : -
+ * updated  : 2015-08-23
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
