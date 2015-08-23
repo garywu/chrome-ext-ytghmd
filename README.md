@@ -11,5 +11,5 @@ The Magical [YouTube GitHub Markdown Button][storepage]. Atascadero Escondido!
 
 [storelogo]: https://cloud.githubusercontent.com/assets/7258373/6788162/ee497942-d154-11e4-934d-ef386061181d.png "Available in the Chrome Web Store"
 
-[screenshot]: https://cloud.githubusercontent.com/assets/7258373/8866931/976f7300-3177-11e5-9127-1d9cf3dc1e36.png
+[screenshot]: https://cloud.githubusercontent.com/assets/7258373/9428341/97b80656-495f-11e5-816a-c4c8ed43127f.png
 
