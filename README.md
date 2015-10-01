@@ -1,4 +1,4 @@
-# `YouTube GitHub Markdown Button`
+# YouTube GitHub Markdown Button
 This missing [GitHub Markdown feature for YouTube][storepage]. Atascadero Escondido!
 
 
