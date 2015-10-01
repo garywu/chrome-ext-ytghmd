@@ -1,5 +1,6 @@
-# chrome-ext-ytghmd
-The Magical [YouTube GitHub Markdown Button][storepage]. Atascadero Escondido!
+# `YouTube GitHub Markdown Button`
+This missing [GitHub Markdown feature for YouTube][storepage]. Atascadero Escondido!
+
 
 [![demo][screenshot]][storepage]
 
