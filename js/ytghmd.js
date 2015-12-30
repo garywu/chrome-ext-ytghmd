@@ -27,8 +27,8 @@
 
 /**
  * name     : ytghmd.js (pffy.cloud.farfalloni)
- * version  : 5
- * updated  : 2015-08-23
+ * version  : 6
+ * updated  : 2015-12-29
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
@@ -107,7 +107,7 @@ function getData(callback) {
 
     // DEVELOPERS: This key can be shutoff at any time. Please create
     // your own API key at: https://console.developers.google.com/project
-    const API_KEY = 'AIzaSyBtgKJE06Ys9obdL0Jnkfl_0kUMyfcA_Hw';
+    const API_KEY = 'INSERT-YOUR-VALID-API-KEY';
     const DEFAULT_TEXT = 'INSERT-TITLE-HERE';
     const DEFAULT_AUTHOR = 'INSERT-AUTHOR-HERE';
     const DEFAULT_DATE = 'INSERT-DATE-HERE';
