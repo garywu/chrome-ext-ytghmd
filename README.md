@@ -7,7 +7,6 @@
 
   + YouTube GitHub Markdown Button, a Google Chrome extension.
   + This is [free software][goto_fsf].
-  + YouTube Markdown is an thumbnail with a link. [Learn More](#compatibility)...
 
 [![chrome-ext-youtube-apa][store_splash]][store_page]
 
