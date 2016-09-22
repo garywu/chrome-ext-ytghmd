@@ -27,8 +27,8 @@
 
 /**
  * name     : ytghmd.js (pffy.cloud.farfalloni)
- * version  : 6
- * updated  : 2015-12-29
+ * version  : 8
+ * updated  : 2016-09-22
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
@@ -37,23 +37,31 @@
 // list of valid URL patterns
 const VALID_URLS = [
 
-  // watch url
-  "https://www.youtube.com/watch?v=",
+  // watch url endpoint
+  // https://www.youtube.com/watch/cKxRvEZd3Mw
+  // https://www.youtube.com/watch?v=cKxRvEZd3Mw
+  'https://www.youtube.com/watch',
 
-  // alternate watch url (where v is not first param)
-  "https://www.youtube.com/watch?",
-
-  // embed url
-  "https://www.youtube.com/embed/",
+  // embed url endpoint
+  // https://www.youtube.com/embed/cKxRvEZd3Mw
+  'https://www.youtube.com/embed',
 
   // privacy embed url
-  "https://www.youtube-nocookie.com/embed/",
+  // https://www.youtube-nocookie.com/embed/cKxRvEZd3Mw
+  'https://www.youtube-nocookie.com/embed/',
 
   // legacy embed url
-  "https://www.youtube.com/v/",
+  // https://www.youtube.com/v/cKxRvEZd3Mw
+  'https://www.youtube.com/v/',
 
   // legacy privacy embed url
-  "https://www.youtube-nocookie.com/v/"
+  // https://www.youtube-nocookie.com/v/cKxRvEZd3Mw
+  'https://www.youtube-nocookie.com/v/',
+
+  // shortened URL with list
+  // https://youtu.be/cKxRvEZd3Mw?list=PLT6elRN3Aer7ncFlaCz8Zz-4B5cnsrOMt
+  'https://youtu.be/'
+
 ];
 
 // Returns true if URI string is valid; otherwise, false.
@@ -66,25 +74,69 @@ function isValid(str) {
   return false;
 }
 
+function hasQuestionMark(str) {
+  if(str.indexOf('?') > -1) {
+    return true;
+  }
+
+  return false;
+}
+
+function hasAmpersand(str) {
+  if(str.indexOf('&') > -1) {
+    return true;
+  }
+
+  return false;
+}
+
 // returns YouTube video id
 function getVideoId(str) {
 
-  // remove valid hosts
-  for(var v in VALID_URLS) {
-    str = str.replace(VALID_URLS[v], '');
+  var arr;
+
+  if(hasQuestionMark(str) || hasAmpersand(str)) {
+
+    arr = str.split(new RegExp('\\?|&'));
+
+    console.log(arr);
+
+    for(var a in arr) {
+
+      if(arr[a].indexOf('v=') > -1) {
+        return arr[a].split('=')[1];
+      }
+
+      const SHORT_URL = 'https://youtu.be/';
+      if(arr[a].indexOf(SHORT_URL) > -1) {
+        return arr[a].substr(SHORT_URL.length);
+      }
+
+      const EMBED_URL = 'https://www.youtube.com/embed/';
+      if(arr[a].indexOf(EMBED_URL) > -1) {
+        return arr[a].substr(EMBED_URL.length);
+      }
+
+      const PRIVACY_URL = 'https://www.youtube-nocookie.com/embed/';
+      if(arr[a].indexOf(PRIVACY_URL) > -1) {
+        return arr[a].substr(PRIVACY_URL.length);
+      }
+
+/*
+      const LEGACY_EMBED_URL = 'https://www.youtube.com/v/';
+      if(arr[a].indexOf(LEGACY_EMBED_URL) > -1) {
+        return arr[a].substr(LEGACY_EMBED_URL.length);
+      }
+
+      const LEGACY_PRIVACY_URL = 'https://www.youtube-nocookie.com/v/';
+      if(arr[a].indexOf(LEGACY_PRIVACY_URL) > -1) {
+        return arr[a].substr(LEGACY_PRIVACY_URL.length);
+      }
+*/
+
+    }
   }
 
-  // only paths remain...
-
-  // if video id is not first param (in watch url)
-  if(str.indexOf('&v=') > -1) {
-    str = str.split('&v=')[1]; // videoid on as the second string
-    str = str.split('&')[0]; // videoid is now the first string
-  }
-
-  // video id always before `?` in embed url
-  str = str.split('?')[0]; // videoid is the first string here
-  return str;
 }
 
 // calls back youtube data for Public and Unlisted videos
@@ -107,7 +159,7 @@ function getData(callback) {
 
     // DEVELOPERS: This key can be shutoff at any time. Please create
     // your own API key at: https://console.developers.google.com/project
-    const API_KEY = 'INSERT-YOUR-VALID-API-KEY';
+    const API_KEY = 'INSERT-API-KEY-HERE';
     const DEFAULT_TEXT = 'INSERT-TITLE-HERE';
     const DEFAULT_AUTHOR = 'INSERT-AUTHOR-HERE';
     const DEFAULT_DATE = 'INSERT-DATE-HERE';
@@ -140,9 +192,11 @@ function getData(callback) {
           thumbnail = resp.result.items[0].snippet.thumbnails.high.url;
           author = resp.result.items[0].snippet.channelTitle;
           date = resp.result.items[0].snippet.publishedAt;
+          ext.videoIsPrivate = false;
           callback(videoId, title, thumbnail, author, date);
         } else {
-          thumbnail = 'https://i.ytimg.com/vi/' + videoId + '/0.jpg';
+          thumbnail = 'images/spinner.gif';
+          ext.videoIsPrivate = true;
           callback(videoId, DEFAULT_TEXT, thumbnail, DEFAULT_AUTHOR, DEFAULT_DATE);
         }
 

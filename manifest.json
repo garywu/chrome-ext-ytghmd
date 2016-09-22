@@ -2,10 +2,10 @@
   "name" : "YouTube GitHub Markdown Button",
   "short_name" : "#ytghmd",
 
-  "version" : "6",
-  "version_name" : "6 (pffy.cloud.farfalloni)",
+  "version" : "8",
+  "version_name" : "8 (pffy.cloud.farfalloni)",
 
-  "description" : "The GitHub Markdown Button for YouTube.",
+  "description" : "The missing GitHub Markdown generator for YouTube.",
 
   "browser_action" :
   {

@@ -27,8 +27,8 @@
 
 /**
  * name     : ui.js (pffy.cloud.farfalloni)
- * version  : 5
- * updated  : 2015-08-23
+ * version  : 8
+ * updated  : 2016-09-22
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
@@ -46,7 +46,6 @@
 
   document.getElementById('watchid').value = str;
   document.getElementById('embedid').value = str;
-  document.getElementById('citeid').value = str;
 }
 
 function displayMarkdown(id, title, imgurl, author, date) {
@@ -87,7 +86,6 @@ function displayMarkdown(id, title, imgurl, author, date) {
 
   document.getElementById('watchid').value = watchstr;
   document.getElementById('embedid').value = embedstr;
-  document.getElementById('citeid').value = apastr;
 
   if(!imgurl) {
     document.getElementById('imgid').src = '';
@@ -104,25 +102,29 @@ function displayMarkdown(id, title, imgurl, author, date) {
 
 function onLoadPopup() {
 
+  // watch URL box
   document.getElementById('watchid').addEventListener('click', function() {
     this.select();
   });
 
+  // embed URL box
   document.getElementById('embedid').addEventListener('click', function() {
     this.select();
   });
 
-  document.getElementById('citeid').addEventListener('click', function() {
-    this.select();
-  });
-
+  // placeholder text
   loading();
 
+  // retrieves APA data
   getData(function(videoid, title, thumbnail, author, date) {
     if(videoid && title && thumbnail && author && date) {
       displayMarkdown(videoid, title, thumbnail, author, date);
     } else {
       document.body.innerText = 'No YouTube Videos here.';
+    }
+
+    if(ext.videoIsPrivate) {
+     document.body.innerText = 'This YouTube video is private.';
     }
   });
 }

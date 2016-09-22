@@ -27,12 +27,15 @@
 
 /**
  * name     : ext.js (pffy.cloud.farfalloni)
- * version  : 5
- * updated  : 2015-08-23
+ * version  : 8
+ * updated  : 2016-09-22
  * license  : http://unlicense.org/ The Unlicense
  * git      : https://github.com/pffy/chrome-ext-ytghmd
  *
  */
 
- // leave empty for now
-ext = {};
+// global extension vars, maybe useful.
+
+ext = {
+	videoIsPrivate: false
+};
