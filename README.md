@@ -27,7 +27,8 @@
 ## Features
 
   + Detects valid Public or Unlist YouTube videos.
-  + 
+  + Generates YouTube Watch or Embed URL Markdown with thumbnail preview.
+  + Hides popup UI if videos are marked Private (or otherwise, unavailable).
 
 ## Install
 
@@ -81,7 +82,7 @@
 
 [store_page]: https://chrome.google.com/webstore/detail/youtube-github-markdown-b/iikknlipbkecnjnfhimdolankojmailj
 [store_icon]: https://cloud.githubusercontent.com/assets/7258373/6788162/ee497942-d154-11e4-934d-ef386061181d.png
-[store_splash]: https://cloud.githubusercontent.com/assets/7258373/18646295/c4fd887a-7e65-11e6-8553-bf80f132fee0.png
+[store_splash]: https://cloud.githubusercontent.com/assets/7258373/18757699/e4695a68-80a9-11e6-8d99-b02790aa84ea.png
 
 [goto_fsf]: https://www.gnu.org/philosophy/free-sw.html
 [goto_gruber]: http://daringfireball.net/projects/markdown/
